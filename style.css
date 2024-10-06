@@ -1,6 +1,23 @@
+.wrap-task {
+    position: relative;
+    height: 150px
+}
+
 #animated-element {
     width: 100px;
     height: 100px;
     background-color: red;
     position: absolute;
+}
+
+.task2 {
+    height: 500px;
+}
+
+.animat-element2 {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    position: absolute;
+    border-radius: 50%;
 }
