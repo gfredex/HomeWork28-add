@@ -27,4 +27,36 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+// Параметрическое задание: x = t * Cos (t); y = t * Sin (t), 
+// где t oт 0 дo бесконечности
+const element2 = document.querySelector('.animat-element2');
+let startX = element2.getBoundingClientRect().x;
+let startY = element2.getBoundingClientRect().y;
+let newX;
+let newY;
+let t = 0;
+let revers = 1;
+// element2.style.left = 100 + 'px';
+// element2.style.top = 200;
+
+function spiral() {
+
+
+    console.log(t);
+
+    newX = startX + t * Math.cos(t);
+    newY = startY + t * Math.sin(t);
+    element2.style.left = newX + 'px';
+    element2.style.top = newY + 'px';
+    t += revers * 0.05;
+    if (t > 100 || t < 0) {
+        revers *= -1;
+    }
+    // следующий шаг анимации
+    requestAnimationFrame(spiral);
+}
+
+// вызов анимации по первой задаче
 animate();
+
+spiral()

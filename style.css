@@ -1,4 +1,4 @@
-.wrap-task {
+.wrap-task1 {
     position: relative;
     height: 150px
 }
@@ -10,14 +10,17 @@
     position: absolute;
 }
 
-.task2 {
-    height: 500px;
+.wrap-task2 {
+    height: 200px;
+    position: relative;
 }
 
 .animat-element2 {
-    width: 100px;
-    height: 100px;
+    width: 20px;
+    height: 20px;
     background-color: green;
     position: absolute;
     border-radius: 50%;
+    left: 50%;
+    top: 10px;
 }
