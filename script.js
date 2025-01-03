@@ -36,13 +36,10 @@ let newX;
 let newY;
 let t = 0;
 let revers = 1;
-// element2.style.left = 100 + 'px';
-// element2.style.top = 200;
 
 function spiral() {
 
-
-    console.log(t);
+    // console.log(t);
 
     newX = startX + t * Math.cos(t);
     newY = startY + t * Math.sin(t);
@@ -56,7 +53,81 @@ function spiral() {
     requestAnimationFrame(spiral);
 }
 
+// Задание 3 
+
+const currentView = document.querySelector('.animate-block-page');
+const page1 = document.querySelector('.page1');
+const page2 = document.querySelector('.page2');
+const page3 = document.querySelector('.page3');
+const page = document.querySelectorAll('.animate-block-page>*')
+const btns = document.querySelectorAll('.buttons-change>*')
+// currentView.offsetWidth - получаю текущий ширину окна отображения
+// currentView.offsetHeight - получаю текущую высоту окна отображения
+const widthBlock = currentView.offsetWidth;
+const heightBlock = currentView.offsetHeight;
+console.log(widthBlock);
+console.log(heightBlock);
+
+page[0].style.width = widthBlock + 'px';
+page[0].style.height = page[1].style.height = page[2].style.height = heightBlock + 'px'
+// page1.offsetHeight = page2.offsetHeight = page3.offsetHeight = heightBlock;
+
+let pressBtn;
+let count = 0;
+btns[0].addEventListener('click', () => {
+    pressBtn = 0;
+    if (count == 0) {
+        count = 2;
+    } else {
+        count -= 1;
+    }
+    console.log(count);
+    changePage();
+});
+btns[1].addEventListener('click', () => {
+    pressBtn = 1;
+    if (count == 2) {
+        count = 0;
+    } else {
+        count += 1;
+    }
+
+    changePage(pressBtn);
+});
+let newWidth = 0;
+let oldWidth = widthBlock;
+function changePage(move) {
+    if (move) {
+        newWidth += 10;
+        oldWidth -= 10;
+        page[count].style.width = newWidth + 'px';
+        if (count - 1) {
+            page[count - 1].style.width = oldWidth + 'px';
+        } else if (count - 1 == 2) {
+            page[0].style.width = oldWidth + 'px';
+        }
+    } else {
+        newWidth -= 10;
+        oldWidth += 10;
+        page[count].style.width = newWidth + 'px';
+        if (count + 1) {
+            page[count + 1].style.width = oldWidth + 'px';
+        } else if (count + 1 == 2) {
+            page[0].style.width = oldWidth + 'px';
+        }
+    }
+
+
+    // следующий шаг анимации
+    requestAnimationFrame(changePage);
+    //остановка если достигнут результат
+    if (page[count].offsetWidth == widthBlock) {
+        cancelAnimationFrame(changePage);
+    }
+}
 // вызов анимации по первой задаче
 animate();
 //Вызов анимации по второй задаче
-spiral()
+spiral();
+//Вызов функции смены блоков
+// changePage();
