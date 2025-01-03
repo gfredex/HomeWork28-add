@@ -125,9 +125,31 @@ function changePage(move) {
         cancelAnimationFrame(changePage);
     }
 }
+
+function parallaxMove() {
+    const parallaxElement = document.querySelector('.parallax');
+
+    function parallaxEffect() {
+        // Получаем текущую позицию прокрутки страницы
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Рассчитываем смещение фона в зависимости от прокрутки
+        const translateY = scrollTop * 0.5; // Коэффициент параллакса
+
+        // Применяем смещение через CSS
+        parallaxElement.style.transform = `translate3d(0, ${translateY}px, 0)`;
+
+        // Продолжаем обновление через requestAnimationFrame
+        requestAnimationFrame(parallaxEffect);
+    }
+
+    // Запускаем эффект
+    requestAnimationFrame(parallaxEffect);
+}
+
 // вызов анимации по первой задаче
 animate();
 //Вызов анимации по второй задаче
 spiral();
-//Вызов функции смены блоков
-// changePage();
+//Вызов анимации параллакс
+parallaxMove()

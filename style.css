@@ -81,3 +81,25 @@
 .next {
     background-image: url(./icons/next.png);
 }
+
+/* задание 4 */
+.animat-parallax-block {
+    margin: 20px auto;
+    overflow-x: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+.parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(./imgForParallax.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transform: translate3d(0, 0, 0);
+    z-index: 5;
+}
